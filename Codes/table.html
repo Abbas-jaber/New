@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>
+       Name
+    </title>
+    <style>
+        table, th , td {
+            border: 1px solid blue  ;
+            border-collapse: collapse;
+            padding: 5px;
+            }
+        #N{
+            color: chartreuse;
+        }
+        #P{
+            color :mediumblue
+        }
+        .F{
+            color:red
+        }
+        .Pr{
+            color : gold
+        }
+   
+        
+    </style>
+    </head>
+<body>
+    <table> 
+        <thead>
+            <tr>
+                <th id="N">Fruit</th>
+                <th id="P">price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="F">Apple </td>
+                <td class="Pr">10 BD</td>
+            </tr>
+            <tr>
+                <td class="F">Banana</td>
+                <td class="Pr">5 BD</td>
+            </tr>
+            <tr>
+                <td class="F">Mango</td>
+                <td class="Pr">20 BD</td>
+            </tr>
+        </tbody>
+    </table>
+    <form>  
+        <div>   
+         <input type="text" placeholder="full name" name="name">
+         <input type="submit">
+        </div>
+        <div>
+            Favourite color ? 
+            <input name="color" type="radio" value="Red">Red
+            <input name="color" type="radio" value="green">green
+            <input name="color" type="radio" value="blue">blue
+        </div>  
+
+    <div>
+        <input name="country" list="countries" placeholder="country">
+        <datalist id="countries">
+            <option value="Italy">
+                <option value="Bahrain">
+                    <option value="USA">
+                        
+                    </option>
+                </option>    
+            </option>
+        </datalist>
+    </div>
+    </form>
+      
+     
+</body>

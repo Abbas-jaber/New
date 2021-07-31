@@ -1,0 +1,750 @@
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8"/>
+        <title>Junior Achievement powered by CrossKnowledge Learning Suite</title>
+        <meta name="author" content="CrossKnowledge"/>
+          <script type="text/javascript" src="/ruxitagentjs_ICA2SVfqru_10205201116183137.js" data-dtconfig="rid=RID_705384297|rpid=863458933|domain=crossknowledge.com|reportUrl=/rb_bf67049ldu|app=43f68c4e31f70632|ssc=1|featureHash=ICA2SVfqru|rdnt=1|uxrgce=1|bp=2|cuc=7pfhlik4|dpvc=1|lastModification=1606305003923|dtVersion=10205201116183137|tp=500,50,0,1|uxdcw=1500|vs=2|agentUri=/ruxitagentjs_ICA2SVfqru_10205201116183137.js"></script><link rel="icon" type="image/png" href="https://jainspire.na.crossknowledge.com/data/logos/8_favicon.png" />
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/libs/extjs/resources/ext-theme-gray/ext-theme-gray-all.css?v=e4e89d43d8d"/>
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/assets/video.js/video-js.min.css?v=e4e89d43d8d"/>
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/assets/videojs-resolution-switcher/videojs-resolution-switcher.css?v=e4e89d43d8d"/>
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/css/FCKEditor.css?v=e4e89d43d8d"/>
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/css/front/widget/calendar.css?v=e4e89d43d8d"/>
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/assets/css/FoMyActivitWidget.css?v=e4e89d43d8d"/>
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/css/front/widget/picture_slider.css?v=e4e89d43d8d"/>
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/assets/css/legacy-fo-page.css?v=e4e89d43d8d"/>
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/assets/css/fonts.css?v=e4e89d43d8d"/>
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/fonts/font-awesome.min.css?v=e4e89d43d8d"/>
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/css/front/learningFeed/learningFeed.css?v=e4e89d43d8d"/>
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/css/front/widget/calendar.css?v=e4e89d43d8d"/>
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/assets/css/FoMyActivitWidget.css?v=e4e89d43d8d"/>
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/css/front/widget/picture_slider.css?v=e4e89d43d8d"/>
+          <link rel="stylesheet" href="/data/styles/SALteststyle/stylesheet.css?t=b8787ff32565b067ceb897140dbe493f" media="screen"/>
+          <link rel="stylesheet" href="/data/css/e4e89d43d8d/SALteststyle/1543240151/fonts/font-face.css" media="screen"/>
+        <script src="https://jainspire.na.crossknowledge.com/site/assets/js/translations.en-US.e4e89d43d8d.js"></script>
+    <script src="https://ckls-assets.na.crossknowledge.com/assets/js/extjs.js?v=e4e89d43d8d"></script>
+    <script src="https://ckls-assets.na.crossknowledge.com/libs/extjs/locale/ext-lang-en.js?v=e4e89d43d8d"></script>
+    <script src="https://ckls-assets.na.crossknowledge.com/assets/video.js/video.min.js?v=e4e89d43d8d"></script>
+    <script src="https://ckls-assets.na.crossknowledge.com/assets/videojs-resolution-switcher/videojs-resolution-switcher.js?v=e4e89d43d8d"></script>
+    <script src="https://ckls-assets.na.crossknowledge.com/assets/js/javascript-fo-legacy-page.js?v=e4e89d43d8d"></script>
+<script>
+
+  themeManager = new ThemeManager("https://jainspire.na.crossknowledge.com/", "/includes/epitools/blank.html", "Candidate");
+  themeManager.setLocaleParameters(" ",
+    ",",
+    "%m/%d/%Y",
+    "l, F j, Y",
+    "h:i",
+    "1");
+  themeManager.setAllowedExtensions("doc,docx,xls,xlsx,ppt,pptx,txt,htm,html,css,pdf,gif,jpg,jpeg,png,psd,zip,gz,tgz,rar,7z,mp3,avi,odt,odp,ods");
+
+  Ext.define("Ckls.picker.Date", {
+    override: "Ext.picker.Date",
+    startDay: 1
+  });
+  Ext.define("Ckls.form.field.Date", {
+    override: "Ext.form.field.Date",
+    startDay: 1
+  });
+
+</script>
+<script type="text/javascript">
+  monthArray      = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  monthArrayShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  dayArray        = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  weekString      = 'W';
+  todayString     = 'Today';
+  languageCode    =  'en';
+
+  var onChangeAction = null;
+  // extend function displayCalendar :
+  var epiDateDisplayCalendarOriginal = displayCalendar;
+  displayCalendar = function(inputField, format, buttonObj, displayTime, timeInput, paramPathToImages, paramOnChangeAction)
+  {
+    pathToImages = paramPathToImages + 'images/';
+
+    if (paramOnChangeAction)
+      onChangeAction = paramOnChangeAction;
+    else
+      onChangeAction = null;
+
+    return epiDateDisplayCalendarOriginal(inputField, format, buttonObj, displayTime, timeInput, paramPathToImages, paramOnChangeAction);
+  }
+
+  var epiDatePickDateOriginal = pickDate;
+  pickDate = function (e, inputDay)
+  {
+    var day;
+    if(!inputDay && this)day = this.innerHTML; else day = inputDay;
+
+    var returnValue = epiDatePickDateOriginal(e, day);
+
+    if (onChangeAction != null)
+      eval(onChangeAction);
+
+    return returnValue;
+  }
+
+
+  function convertStringToDate(strDate)
+  {
+    var format = 'mm/dd/yyyy';
+    if(strDate.length!=format.length)
+      return null;
+    var monthPos = format.indexOf('mm');
+    currentMonth = strDate.substr(monthPos,2)/1;
+    var yearPos = format.indexOf('yyyy');
+    currentYear = strDate.substr(yearPos,4);
+    var dayPos = format.indexOf('dd');
+    tmpDay = strDate.substr(dayPos,2);
+    var ret = new Object();
+    ret['y'] = currentYear;
+    ret['m'] = currentMonth;
+    ret['d'] = tmpDay;
+    return ret;
+  }
+
+
+</script>
+
+    <script src="https://ckls-assets.na.crossknowledge.com/js/WidgetLayoutAdapter.js?v=e4e89d43d8d"></script>
+    <script src="https://ckls-assets.na.crossknowledge.com/assets/js/FoWidgetsLayout.js?v=e4e89d43d8d"></script>
+    <script src="https://ckls-assets.na.crossknowledge.com/assets/js/FoNavigationCleaner.js?v=e4e89d43d8d"></script>
+    <script src="https://ckls-assets.na.crossknowledge.com/js/widget/trainings.js?v=e4e89d43d8d"></script>
+    <script src="https://ckls-assets.na.crossknowledge.com/js/build/Widget/Calendar.js?v=e4e89d43d8d"></script>
+    <script src="https://ckls-assets.na.crossknowledge.com/libs/carouFredSel/jquery.carouFredSel-6.2.1.js?v=e4e89d43d8d"></script>
+    <script src="https://ckls-assets.na.crossknowledge.com/libs/mosaic/js/mosaic.1.0.1.min.js?v=e4e89d43d8d"></script>
+    <script src="https://ckls-assets.na.crossknowledge.com/js/widget/picture_slider.js?v=e4e89d43d8d"></script>
+
+
+<script src="https://ckls-assets.na.crossknowledge.com/bundles/fosjsrouting/js/router.js?v=e4e89d43d8d"></script>
+    <script src="https://ckls-assets.na.crossknowledge.com/assets/js/fos_js_routes.js?v=e4e89d43d8d"></script>
+    </head>
+<body
+    data-is-scorm-connector="0"
+    class="en Candidate Page--portal"
+    lang="en-US">
+
+        <div class="containerBox containerPaths pieFix pie" id="top">
+        <table class="header">
+            <tr>
+                <td class="logo">
+                    <a title="Back to home page"
+                       href="https://jainspire.na.crossknowledge.com/site/home"><img src="https://jainspire.na.crossknowledge.com/data/logos/25.png" alt="" /></a>
+                </td>
+                <td class="banner">
+                    <div class="headerBoxBottomWrapper pie headerBoxBottomWrapperOverride">
+                        <div class="welcomeBox"><div class="learnerBox"><div class="learnerName">Welcome <strong>Abbas A.Jabbar Abbas Ahmed Yusuf Almutawa</strong></div></div><div class="learnerImage"><a id="WelcomeBoxLink"><img class="pie" src="https://ckls-cdn-na.crossknowledge.com/user/thumbnail/default/A-C0DD58-w30h30.png?Expires=1607501899&Signature=jx2i7sqGAs4IKIyv9iEE~ejcFaGkA5RYFJ9vQdPFyHQMup3yie3Qpv-Lma~FtwcMysvcAP1WvVjyid6Mq5QL6zFjvesILSaYUJplvTm4aHzte8ExwEjcjfL4FlVpXXnBtz-TvWtKBsoHplZ-EF4nR0ynjjPDcy7UThnhdnQfDB0_&Key-Pair-Id=APKAJJHIVLPNTIQTXE3Q"/><i class="fa fa-caret-down"></i></a></div><form method="POST" id="formChooseLanguage"><input type="hidden" name="langcode" id="langcodeID"/><ul id="learnerMenu" class="displayNone pie"><li><a href="https://jainspire.na.crossknowledge.com/candidat/profile.php">My profile</a></li><li><a href="/site/privacy">Privacy settings</a></li><li><a href="/site/app/access">Management of applications</a></li><li><a href="#" onclick="showCookiePolicy()">Cookie policy</a></li><li class="divider"></li><li><a href="#" class="selectedLang">English (United States)</a></li><li><a onclick="$('langcodeID').setValue('ar-EG'); $('formChooseLanguage').submit();">العربية (مصر)</a></li><li><a onclick="$('langcodeID').setValue('ar-SA'); $('formChooseLanguage').submit();">العربية (المملكة العربية السعودية)</a></li><li><a onclick="$('langcodeID').setValue('bg-BG'); $('formChooseLanguage').submit();">Български</a></li><li><a onclick="$('langcodeID').setValue('de-DE'); $('formChooseLanguage').submit();">Deutsch</a></li><li><a onclick="$('langcodeID').setValue('el-GR'); $('formChooseLanguage').submit();">Ελληνικά</a></li><li><a onclick="$('langcodeID').setValue('en-GB'); $('formChooseLanguage').submit();">English (United Kingdom)</a></li><li><a onclick="$('langcodeID').setValue('es-CO'); $('formChooseLanguage').submit();">Español (Colombia)</a></li><li><a onclick="$('langcodeID').setValue('es-ES'); $('formChooseLanguage').submit();">Español (España)</a></li><li><a onclick="$('langcodeID').setValue('fr-FR'); $('formChooseLanguage').submit();">Français</a></li><li><a onclick="$('langcodeID').setValue('he-IL'); $('formChooseLanguage').submit();">עברית</a></li><li><a onclick="$('langcodeID').setValue('id-ID'); $('formChooseLanguage').submit();">Indonesia</a></li><li><a onclick="$('langcodeID').setValue('lt-LT'); $('formChooseLanguage').submit();">Lietuvių</a></li><li><a onclick="$('langcodeID').setValue('ms-MY'); $('formChooseLanguage').submit();">Melayu</a></li><li><a onclick="$('langcodeID').setValue('pt-BR'); $('formChooseLanguage').submit();">Português</a></li><li><a onclick="$('langcodeID').setValue('ro-RO'); $('formChooseLanguage').submit();">Română</a></li><li><a onclick="$('langcodeID').setValue('ru-RU'); $('formChooseLanguage').submit();">Русский</a></li><li><a onclick="$('langcodeID').setValue('vi-VN'); $('formChooseLanguage').submit();">Tiếng Việt</a></li><li class="logoutBox"><div class="divider"></div><a href="https://jainspire.na.crossknowledge.com/authentication/logout.php">Log out</a></li></ul></form></div>                    </div>
+                </td>
+            </tr>
+        </table>
+
+                    <div class="contentBox pie">
+    <div class="navTopBox">
+                    <div class="navTopGeneral" id="navigation">
+                <ul class="pie">
+                              <li class="selected pie home"><a id="tab_home" accesskey="1" href="https://jainspire.na.crossknowledge.com/site/home" style="word-break: keep-all" class="darkLink navTopHome pie" >Home</a></li>
+          <li class="pie myactivity"><a id="tab_myactivity" accesskey="2" href="https://jainspire.na.crossknowledge.com/candidat/my_activity.php" style="word-break: keep-all" class="lightLink navTopActivity pie" >My&nbsp;activity</a></li>
+          <li class="pie profil"><a id="tab_f5fa86ce-4309-11df-bd78-900956d89593" accesskey="3" href="https://jainspire.na.crossknowledge.com/candidat/profile.php" style="word-break: keep-all" class="lightLink navTopOther pie" >My&nbsp;profile</a></li>
+                </ul>
+                <div class="content pie"></div>
+            </div>
+            </div>
+    <div id="pageContent" class="pieFix">
+    <div id="ajaxNotificationsHolder" style="display:none"></div>
+
+    <div class="notifications">
+            </div>
+
+    <div class="template-container">
+        <div class="template-overlay"></div>
+        <div class="templateBox">
+            <div class="tableTemplate">
+                                    <div class="tableTemplate-line js-templateLine " style=" background-color: ; ">
+        <div class="tdTemplate smallTdTemplate left" >
+                                    
+    
+    <div class="widgetContainer pie trainingSessionEditoBoxWidget custom5 widgetWithoutIcon">
+        <div class="widgetContainer2 pie pieFix">
+            <div id="widgetInnerHTML_9990" class="widgetInnerHTML trainingSessionEditoBox widgetGridSize">
+<h2 class='widgetTitle'>My Programs</h2>
+	<div class="trainingSessionEditoBoxEdito"><h3><span style="color: rgb(66, 169, 66);"><img width="60" height="48" align="left" src="https://jainspire.na.crossknowledge.com//data/fckeditor_uploads/293/b0d/bf0/d72/8f4/688/908/57e/292/a1f/ce/293b0dbf0d728f468890857e292a1fce(1).png" style="margin-left: 0px; margin-right: 0px;" alt="" /></span></h3>
+<h2><span style="color: rgb(66, 169, 66);">Access your INJAZ Programs and Training Classes:</span></h2></div>
+<ul class="trainingSessionEditoBoxLinkBox">
+			<li class="trainingSessionEditoBoxLi trainingSessionEditoBoxLiOdd" ><a href="https://jainspire.na.crossknowledge.com/site/path/55265">Careers and Job Applications - Al Mahd Day Boarding School - CS</a></li>
+</div>
+        </div>
+    </div>
+    <div class="widgetSeparator">&nbsp;</div>
+    
+
+                    </div>
+    <div class="tdTemplate smallTdTemplate middle" >
+                                    <div class="widgetContainer pie calendarBoxWidget immersive widgetWithoutIcon">
+    <div class="widgetContainer2 pie pieFix">
+            <div class="calendarWidgetContainer widgetGridSize"
+         data-token="IX4F-rUT3F4rkZKfOU7VqKLMcWo5RdYzHRGYChZmL_o"
+         data-style="immersive"></div>
+    </div>
+</div>
+<div class="widgetSeparator">&nbsp;</div>
+                    </div>
+    <div class="tdTemplate smallTdTemplate right" >
+                                    <div class="widgetContainer pie myActivityBoxWidget immersive widgetWithoutIcon">
+    <div class="widgetContainer2 pie pieFix">
+            <div class="widgetGridSize">
+    <div class="myActivity-title"><h2 class="widgetTitle"></h2></div>
+    <div class="myActivity-hoursAndMinutesContainer">
+        <div class="myActivity-digitGroup">
+                            <div class="myActivity-digitBox" style="background-color: #008752">
+                    <div class="myActivity-digitBoxBar immersive"></div>
+                    <div class="myActivity-digitBoxBar2 immersive"></div>
+                    0
+                </div>
+                            <div class="myActivity-digitBox" style="background-color: #008752">
+                    <div class="myActivity-digitBoxBar immersive"></div>
+                    <div class="myActivity-digitBoxBar2 immersive"></div>
+                    1
+                </div>
+                        <div class="myActivity-digitGroupLabel" style="color: #008752">HOURS</div>
+        </div>
+                    <div class="myActivity-semicolonGroup">
+                <div class="myActivity-semicolonBox" style="color: #008752">:</div>
+                <div>&nbsp;</div>
+            </div>
+            <div class="myActivity-digitGroup">
+                                    <div class="myActivity-digitBox" style="background-color: #008752">
+                        <div class="myActivity-digitBoxBar immersive"></div>
+                        <div class="myActivity-digitBoxBar2 immersive"></div>
+                        2
+                    </div>
+                                    <div class="myActivity-digitBox" style="background-color: #008752">
+                        <div class="myActivity-digitBoxBar immersive"></div>
+                        <div class="myActivity-digitBoxBar2 immersive"></div>
+                        6
+                    </div>
+                                <div class="myActivity-digitGroupLabel" style="color: #008752">MINUTES</div>
+            </div>
+            </div>
+    <div class="myActivity-textContainer">
+        1 h 26 min.
+    </div>
+    <!--[if lt IE 8]>
+    <style>
+        .myActivity-digitGroup, .myActivity-digitBox,
+        .myActivity-semicolonGroup, .myActivity-semicolonBox,
+        .myActivity-digitBoxBar, .myActivity-digitBoxBar2 { display:inline !important; zoom:1; }
+        .myActivity-semicolonBox { height: 62px !important; vertical-align: middle; }
+    </style>
+    <![endif]-->
+    </div>
+    </div>
+</div>
+<div class="widgetSeparator">&nbsp;</div>
+                    </div>
+</div>
+                                    <div class="tableTemplate-line js-templateLine " style=" background-color: ; ">
+        <div class="tdTemplate mediumTdTemplate left" >
+        </div>
+    <div class="tdTemplate mediumTdTemplate right" >
+        </div>
+</div>
+                                    <div class="tableTemplate-line js-templateLine " style=" background-color: ; ">
+        <div class="tdTemplate smallTdTemplate left" >
+                                    <div class="widgetContainer pie SmallPictureWidget highlighted widgetWithoutIcon">
+    <div class="widgetContainer2 pie pieFix">
+        
+    <div class="PictureWidgetContainer">
+                    <h2>Elementary (Primary) Level Programs</h2>
+                <div class="picture_slider_wrapper slider_wrapper_row_1">
+                        <div class="slider_button_prev slider_button_prev-25"></div>
+                        <div class="slider">
+                <div class="slider_inner" data-slider="auto">
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/Ourselves.pdf', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">Ourselves Program</p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/Ourselves.pdf', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/32876731-9E70-09FF-0BD9-281A3E9F6C5E/phpd3DSWp-w280') center center no-repeat #A5B563">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/OurFamilies.pdf', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">Our Families Program</p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/OurFamilies.pdf', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/1ABD503F-FC1F-E2A0-3108-43C2FE930501/php1pqVA0-h366') center center no-repeat #FFFFDE">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/JuniorICAMP_27-06.pdf', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">Junior ICamp Program</p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/JuniorICAMP_27-06.pdf', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/D853B799-2162-FF28-81B0-E30B7210846C/phpWRyQvZ-h366') center center no-repeat #EFF7F7">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/SmartInvestor.pdf', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">Smart Investor Program</p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/SmartInvestor.pdf', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/04E0AE30-AA6D-2568-4E63-37171A839CAC/phpXuaEsr-w280') center center no-repeat #A5D6CE">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/OurNation.pdf', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">Our Nation Program</p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/OurNation.pdf', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/296A9222-F20B-5F88-DBEF-BA1DBD527F15/php2hN19w-h366') center center no-repeat #FF843A">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                    </div>
+            </div>
+                        <div class="pager-container"><div id="pager" class="pager pie"></div></div>
+            <div class="slider_button_next slider_button_next-25"></div>
+            
+        </div>
+    </div>
+    </div>
+</div>
+<div class="widgetSeparator">&nbsp;</div>
+                    </div>
+    <div class="tdTemplate smallTdTemplate middle" >
+                                    <div class="widgetContainer pie SmallPictureWidget highlighted widgetWithoutIcon">
+    <div class="widgetContainer2 pie pieFix">
+        
+    <div class="PictureWidgetContainer">
+                    <h2>Intermediate Level Programs</h2>
+                <div class="picture_slider_wrapper slider_wrapper_row_1">
+                        <div class="slider_button_prev slider_button_prev-25"></div>
+                        <div class="slider">
+                <div class="slider_inner" data-slider="auto">
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/MorethanMoney.pdf', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">More Than Money Program</p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/MorethanMoney.pdf', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/FDDE0D67-D6AE-5EFD-F494-C07CA6746B0B/phpNVQfSq-w280') center center no-repeat #CEE6EF">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/ItsMyBusiness.pdf', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">It&#039;s My Business Program</p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/ItsMyBusiness.pdf', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/9B267089-0975-309B-2731-A95C3871CD64/phpxUxBM5-h366') center center no-repeat #FFFFFF">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/EconomicforSuccess.pdf', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">Economics for Success Program</p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/EconomicforSuccess.pdf', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/D3DD5EEC-12FE-E33B-7CAB-0EDBFD9270B6/php1WdObd-h366') center center no-repeat #290000">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/EntrepreneurshipMasterclass.pdf', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">Entrepreneurship Master Class Program</p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/EntrepreneurshipMasterclass.pdf', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/A0E17A77-C83F-A2B8-96DA-8DF6331E36F2/phpPMeXCt-h366') center center no-repeat #FFFFFF">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                    </div>
+            </div>
+                        <div class="pager-container"><div id="pager" class="pager pie"></div></div>
+            <div class="slider_button_next slider_button_next-25"></div>
+            
+        </div>
+    </div>
+    </div>
+</div>
+<div class="widgetSeparator">&nbsp;</div>
+                    </div>
+    <div class="tdTemplate smallTdTemplate right" >
+                                    <div class="widgetContainer pie SmallPictureWidget highlighted widgetWithoutIcon">
+    <div class="widgetContainer2 pie pieFix">
+        
+    <div class="PictureWidgetContainer">
+                    <h2>Secondary &amp; University Programs</h2>
+                <div class="picture_slider_wrapper slider_wrapper_row_1">
+                        <div class="slider_button_prev slider_button_prev-25"></div>
+                        <div class="slider">
+                <div class="slider_inner" data-slider="auto">
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/BeEntrepreneurial.pdf', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">Be Entrepreneurial Program - Sec</p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/BeEntrepreneurial.pdf', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/D9C69A17-0514-B38E-C376-0C48C277623F/phpPMbhho-w280') center center no-repeat #000000">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/ItMyFuture.pdf', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">It&#039;s My Future Program - Sec</p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/ItMyFuture.pdf', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/EBCEB5E1-6062-424A-6312-D2B9C977E546/phpLgkjBb-h366') center center no-repeat #FFFFFF">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/JobShadow.pdf', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">Job Shadow Program - Sec</p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/JobShadow.pdf', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/3FD48275-3B98-793D-3182-B97B800BAEB5/phpOZS1uB-h366') center center no-repeat #080808">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/PersonalFinance.png', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">Personal Finance Program - Sec</p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/PersonalFinance.png', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/90C79F4C-F4ED-8726-8FE4-03B6AB173D54/phpmDSVpL-h366') center center no-repeat #FFFFFF">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/CareerSuccess.pdf', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">Career Success Program - Sec </p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/CareerSuccess.pdf', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/B434245E-689B-C825-E5B6-E73842A00364/phpn5BBIx-h366') center center no-repeat #C5DE4A">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/InnovationCamp.pdf', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">Innovation Camp Program - Sec &amp; Uni</p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/InnovationCamp.pdf', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/F8BB2DF2-4EE9-B476-2A20-EF7201AF29CF/phpBU8yF0-h366') center center no-repeat #D6D6DE">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/Company.pdf', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">Company Program - Sec &amp; Uni</p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/Company.pdf', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/ACCC31E6-E0FC-A997-EC09-960E04E11421/phpPdmq52-h366') center center no-repeat #FFFFFF">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                            <div class="slider_element">
+                            <div class="mosaic-block"
+                                 style="width: 280px; height: 366px;">
+
+                                                                                                            <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/Headstart.pdf', '_blank')" class="mosaic-overlay picture-slider-pointer" style="display: inline; opacity: 0;">
+                                            <div class="mosaic-overlay-inner" style="width: 280px; height: 366px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                                                                                            <p class="title">Head Start Program - Uni</p>
+                                                                                                                                                                                </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div onclick="PictureSliderWidget.openLink('http://www.injazbh.org/brochure/Headstart.pdf', '_blank')"  class="picture-slider-pointer">
+                                            <div class="mosaic-backdrop" style="width: 280px; height: 366px; background: url('https://jainspire.na.crossknowledge.com/data/widgets_pictures/08ECFF49-DBC7-AA74-ECE3-D91910A93469/phpmb4Aqt-w280') center center no-repeat #EF5A29">
+                                            </div>
+                                        </div>
+
+                                                                                                </div>
+                        </div>
+                                    </div>
+            </div>
+                        <div class="pager-container"><div id="pager" class="pager pie"></div></div>
+            <div class="slider_button_next slider_button_next-25"></div>
+            
+        </div>
+    </div>
+    </div>
+</div>
+<div class="widgetSeparator">&nbsp;</div>
+                    </div>
+</div>
+                            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/css/front/widget/calendar.css?v=e4e89d43d8d"/>
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/assets/css/FoMyActivitWidget.css?v=e4e89d43d8d"/>
+    <link rel="stylesheet" href="https://ckls-assets.na.crossknowledge.com/css/front/widget/picture_slider.css?v=e4e89d43d8d"/>
+    <script src="https://ckls-assets.na.crossknowledge.com/assets/js/FoNavigationCleaner.js?v=e4e89d43d8d"></script>
+
+
+
+
+
+
+
+
+
+    <div class="CookieBanner js-CookieBanner">
+    <div class="CookieBanner-wrapper">
+        <div class="CookieBanner-notice">
+            <i class="CookieBanner-icon icon-cookie"></i>
+            <div class="CookieBanner-texts">
+                <div class="CookieBanner-title">This website uses cookies</div>
+                <div class="CookieBanner-description">
+                    We use cookies to ensure that we provide you with the best user experience. By accessing our website, you consent to our cookie policy.
+                    <a class="CookieBanner-link" href="#" onclick="showCookiePolicy(); return false;">Read more about our cookie policy.</a>
+                </div>
+            </div>
+            <button class="actionButton CookieBanner-button" type="button" onclick="acceptCookieBanner()">I agree</button>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+    <div class="footerUpSeparator">&nbsp;</div>
+    <div class="CKLogo floatRight"></div>
+    
+    <div class="clientLogo floatLeft"> </div>
+
+  </div>
+</div>
+
+  
+  <script type="text/javascript">
+    function openSupportWindow()
+    {
+        EASOpenedWindows[EASOpenedWindows.length] = openCenteredWindow
+        	('https://jainspire.na.crossknowledge.com/candidat/configuration/contact_support.php',
+           'ContactWindow',850,600,'location=no,menubar=no,resizable=yes,scrollbars=yes,status=yes,titlebar=yes,toolbar=no',true,true);
+    }
+
+    /**
+    * Hide the Facebook button and send a request to keep it hidden.
+    *
+    */
+		function hideFacebookButton()
+		{
+			$('facebookButton').toggleClassName('hidden');
+			$('facebookDetails').toggleClassName('hidden');
+
+			var pars = {
+				'method' : 'doNotShowFacebookButtonAnymore'
+			}
+
+			var url = "https://jainspire.na.crossknowledge.com/candidat/xmlrpc.php";
+
+			new Ajax.Request( url,
+					{parameters: pars}
+			);
+		}
+  </script>
+
+</body>
+
+</html>
